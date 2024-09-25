@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Web Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>My Simple Web Page</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Welcome to My Web Page</h2>
+        <p>This is a simple web page created as part of an exercise. Here you can find some text content about the topic of your choice.</p>
+        
+        <h3>Random Quote:</h3>
+        <blockquote>
+            <p>{{ quote }}</p>
+        </blockquote>
+
+        <h3>User Information Form</h3>
+        <form action="/submit" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        {% if user_data %}
+            <h3>Submitted Data:</h3>
+            <p>Name: {{ user_data.name }}</p>
+            <p>Email: {{ user_data.email }}</p>
+        {% endif %}
+    </main>
+    <footer>
+        <p>Contact us: info@example.com</p>
+    </footer>
+</body>
+</html>
